@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Static File Demo</title>
+
+<style>
+
+/* ===== GLASSMORPHISM THEME — Assignment 1 ===== */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.12);
+  --glass-bg-strong: rgba(255, 255, 255, 0.18);
+  --glass-border: rgba(255, 255, 255, 0.28);
+  --glass-shadow: 0 18px 45px rgba(5, 10, 30, 0.30);
+  --accent: #7c5cff;
+  --accent-2: #22d3ee;
+  --accent-3: #f472b6;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh !important;
+  margin: 0 !important;
+  font-family: Inter, "Segoe UI", Arial, sans-serif !important;
+  color: var(--text) !important;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(124, 92, 255, .32), transparent 30%),
+    radial-gradient(circle at 88% 15%, rgba(34, 211, 238, .22), transparent 28%),
+    radial-gradient(circle at 55% 90%, rgba(244, 114, 182, .18), transparent 30%),
+    linear-gradient(135deg, #090d20 0%, #111936 48%, #071b2c 100%) !important;
+  background-attachment: fixed !important;
+  line-height: 1.6 !important;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(124, 92, 255, .18);
+  filter: blur(70px);
+  top: 8%;
+  left: 5%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: rgba(34, 211, 238, .12);
+  filter: blur(80px);
+  bottom: 5%;
+  right: 4%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+header, nav, main, section, article, aside, footer,
+.container, .card, .cards, form, fieldset, table,
+.alert, .modal-content, .list-group, .box, .content,
+[class*="card"], [class*="container"] {
+  color: var(--text) !important;
+}
+
+header, nav, section, article, aside, footer,
+.card, .cards, form, fieldset, table,
+.alert, .box, .content,
+[class*="card"], [class*="panel"], [class*="box"] {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow) !important;
+  backdrop-filter: blur(18px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(150%) !important;
+}
+
+header {
+  margin: 18px auto !important;
+  width: min(94%, 1200px) !important;
+  border-radius: 24px !important;
+  padding: 32px 24px !important;
+  background: linear-gradient(135deg, rgba(124,92,255,.24), rgba(34,211,238,.12)) !important;
+}
+
+nav {
+  margin: 18px auto !important;
+  width: min(94%, 1200px) !important;
+  border-radius: 18px !important;
+  padding: 14px 18px !important;
+}
+
+main, .container {
+  width: min(94%, 1200px) !important;
+  margin: 28px auto !important;
+}
+
+.card, .box, .content, article, section, aside {
+  border-radius: 20px !important;
+  padding: 22px !important;
+  margin: 18px 0 !important;
+}
+
+.cards {
+  padding: 20px !important;
+  border-radius: 24px !important;
+  gap: 20px !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 18px rgba(124,92,255,.25);
+}
+
+h1 { letter-spacing: .5px; }
+
+p, li, label, td, th, small {
+  color: var(--muted) !important;
+}
+
+a {
+  color: #67e8f9 !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: .25s ease !important;
+}
+
+a:hover {
+  color: #f9a8d4 !important;
+  text-shadow: 0 0 14px rgba(244,114,182,.55);
+}
+
+button, input[type="submit"], input[type="button"], input[type="reset"],
+.btn, .button {
+  border: 1px solid rgba(255,255,255,.28) !important;
+  border-radius: 12px !important;
+  padding: 10px 18px !important;
+  color: white !important;
+  background: linear-gradient(135deg, rgba(124,92,255,.85), rgba(34,211,238,.65)) !important;
+  box-shadow: 0 10px 25px rgba(124,92,255,.22) !important;
+  cursor: pointer !important;
+  transition: transform .25s ease, box-shadow .25s ease, filter .25s ease !important;
+}
+
+button:hover, input[type="submit"]:hover, input[type="button"]:hover,
+input[type="reset"]:hover, .btn:hover, .button:hover {
+  transform: translateY(-2px) !important;
+  filter: brightness(1.12) !important;
+  box-shadow: 0 14px 30px rgba(34,211,238,.25) !important;
+}
+
+input, select, textarea {
+  max-width: 100%;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  border-radius: 12px !important;
+  background: rgba(255,255,255,.09) !important;
+  color: white !important;
+  padding: 10px 12px !important;
+  outline: none !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+
+input::placeholder, textarea::placeholder { color: #aebbd0 !important; }
+
+input:focus, select:focus, textarea:focus {
+  border-color: rgba(34,211,238,.65) !important;
+  box-shadow: 0 0 0 3px rgba(34,211,238,.12) !important;
+}
+
+option { background: #111936 !important; color: white !important; }
+
+table {
+  width: 100%;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  overflow: hidden !important;
+  border-radius: 18px !important;
+}
+
+th {
+  background: rgba(124,92,255,.28) !important;
+  color: white !important;
+}
+
+td, th {
+  border-color: rgba(255,255,255,.14) !important;
+  padding: 12px !important;
+}
+
+img, video, iframe, audio {
+  border-radius: 16px !important;
+  box-shadow: 0 14px 35px rgba(0,0,0,.28) !important;
+}
+
+img { max-width: 100%; height: auto; }
+
+hr { border: 0 !important; border-top: 1px solid rgba(255,255,255,.18) !important; }
+
+pre, code {
+  border: 1px solid rgba(255,255,255,.16) !important;
+  border-radius: 14px !important;
+  background: rgba(0,0,0,.30) !important;
+  color: #a5f3fc !important;
+}
+
+pre { padding: 18px !important; overflow-x: auto !important; }
+
+footer {
+  margin: 28px auto 18px !important;
+  width: min(94%, 1200px) !important;
+  border-radius: 20px !important;
+  padding: 20px !important;
+  background: rgba(5,10,30,.42) !important;
+}
+
+.alert, .alert-info, .alert-success, .alert-warning, .alert-danger {
+  border-radius: 16px !important;
+  background: rgba(255,255,255,.10) !important;
+  color: white !important;
+}
+
+@media (max-width: 700px) {
+  header, nav, main, .container, footer { width: 94% !important; }
+  .cards { grid-template-columns: 1fr !important; }
+  header h1 { font-size: 28px !important; }
+}
+
+</style>
+<style>body{background:linear-gradient(135deg,#ffffff,#f4f6f8);color:#202124;font-family:Inter,Segoe UI,Arial,sans-serif} .container,.card,.box,section,form,table,header,nav,main,article,aside{background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);box-shadow:0 12px 35px rgba(30,40,50,.10);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px} input,textarea,select{background:rgba(255,255,255,.9);color:#202124;border:1px solid #e1e5e9;border-radius:10px} button,.btn{background:#fff;color:#333;border:1px solid #e1e5e9;border-radius:10px;box-shadow:0 6px 16px rgba(0,0,0,.08)} a{color:#4f5f72} h1,h2,h3{color:#1f2933}</style></head>
+<body>
+    <h1>Hello from Public Folder!</h1>
+    <p>This HTML file is served using Express static middleware.</p>
+</body>
+</html>
